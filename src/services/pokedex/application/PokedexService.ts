@@ -1,5 +1,5 @@
 import { POKEMONS_PER_PAGE } from "@/constants/pokedex";
-import { PokedexResponse } from "../domain/pokemon";
+import { PokedexResponse, PokemonResponse } from "../domain/pokemon";
 import { pokedexFetch } from "../infrastructure/pokedex-fetch";
 
 const PokedexService = {
@@ -12,6 +12,15 @@ const PokedexService = {
       return data;
     } catch (error) {
       throw new Error("Error cargando pokemones.");
+    }
+  },
+  async getPokemon(pokemonId: string) {
+    try {
+      const res = await pokedexFetch(`/pokemon/${pokemonId}`);
+      const data = (await res.json()) as PokemonResponse;
+      return data;
+    } catch (error) {
+      throw new Error("Error cargando pokemon.");
     }
   },
 };

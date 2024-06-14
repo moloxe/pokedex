@@ -6,3 +6,10 @@ export type PokedexResponse = {
   previous: string;
   results: PokedexResult[];
 };
+
+export type PokemonResponse = {
+  height: number;
+  id: number;
+  name: string;
+  weight: number;
+};

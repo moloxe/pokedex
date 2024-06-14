@@ -25,7 +25,7 @@ const PokemonCard: FC<Props> = ({ pokemon }) => {
       href={`/pokemon/${pokemonId}`}
     >
       <Image
-        className="h-20"
+        className="h-20 w-20"
         src={imgUrl}
         alt={pokemon.name}
         width={100}
