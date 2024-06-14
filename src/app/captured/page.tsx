@@ -7,7 +7,11 @@ import Image from "next/image";
 
 export default function Home() {
   const auth = useAuth();
-  const { data: pokemonIds, isLoading } = useQuery<string[]>({
+  const {
+    data: pokemonIds,
+    isLoading,
+    refetch,
+  } = useQuery<string[]>({
     queryKey: ["captured"],
     queryFn: () => {
       if (!auth.user) return [];
@@ -19,6 +23,13 @@ export default function Home() {
 
   return (
     <div className="flex flex-col gap-4">
+      <h1>Pokemones capturados</h1>
+      <button
+        className="bg-primary w-fit rounded px-2 mb-4"
+        onClick={() => refetch()}
+      >
+        Refrescar
+      </button>
       <div className="grid grid-cols-4 w-full m-auto max-md:grid-cols-3 max-sm:grid-cols-2 gap-x-2 gap-y-4">
         {(pokemonIds ?? []).map((id) => (
           <div

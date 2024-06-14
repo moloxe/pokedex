@@ -11,6 +11,7 @@ export default function Home() {
     const username = formData.get("username") as string;
     const password = formData.get("password") as string;
     auth.login(username, password);
+    window.location.href = "/pokedex";
   }
 
   if (auth.isLoading) <>Cargando :D</>;

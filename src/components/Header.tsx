@@ -22,21 +22,23 @@ export default function Header() {
         </a>
       ))}
       {auth.isLogged && (
-        <a className="no-underline text-xl" href="captured">
+        <a className="no-underline text-xl" href="/captured">
           Capturados
         </a>
       )}
 
-      {auth.isLogged ? (
-        <div className="ml-auto flex gap-4 text-sm">
-          <p className="flex justify-center items-center">
-            Usuario: {auth.user?.username}
-          </p>
-          <button className="hover:underline text-sm">Cerrar sesión</button>
-        </div>
-      ) : (
-        <a href="/">Iniciar sesión</a>
-      )}
+      <div className="ml-auto flex gap-4 text-sm">
+        {auth.isLogged ? (
+          <>
+            <p className="flex justify-center items-center">
+              Usuario: {auth.user?.username}
+            </p>
+            <button className="hover:underline text-sm">Cerrar sesión</button>
+          </>
+        ) : (
+          <a href="/">Iniciar sesión</a>
+        )}
+      </div>
     </header>
   );
 }
