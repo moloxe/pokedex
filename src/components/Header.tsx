@@ -33,7 +33,12 @@ export default function Header() {
             <p className="flex justify-center items-center">
               Usuario: {auth.user?.username}
             </p>
-            <button className="hover:underline text-sm">Cerrar sesión</button>
+            <button
+              className="hover:underline text-sm"
+              onClick={() => auth.clearUser()}
+            >
+              Cerrar sesión
+            </button>
           </>
         ) : (
           <a href="/">Iniciar sesión</a>
