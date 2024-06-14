@@ -3,31 +3,101 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  color-scheme: dark;
+  @apply touch-manipulation;
+  --primary: #db543c;
+  --contrast: #100e21;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer base {
+  html {
+    overflow-y: scroll;
+  }
+  html,
+  body {
+    @apply h-full w-full relative bg-[var(--contrast)];
+  }
+
+  #__nuxt {
+    @apply h-full w-full flex flex-col items-stretch;
+  }
+
+  :not(pre) > code {
+    @apply px-1 text-neutral-800 bg-white;
+  }
+  pre:has(code) {
+    @apply p-2  rounded bg-[var(--code-background)] mt-2;
+  }
+  code {
+    @apply [text-wrap:balance] [white-space:break-spaces] [word-break:break-word]
+      text-sm font-mono rounded;
+  }
+  pre code.hljs {
+    padding: 0 !important;
+  }
+
+  h1 {
+    @apply text-2xl font-bold;
+  }
+  h2 {
+    @apply text-xl font-bold;
+  }
+  h3 {
+    @apply text-lg font-semibold;
+  }
+  h4 {
+    @apply text-base font-semibold;
+  }
+  h5 {
+    @apply text-sm font-semibold;
+  }
+  h6 {
+    @apply text-xs font-normal;
+  }
+
+  ul {
+    @apply list-disc;
+  }
+  ol {
+    @apply list-decimal;
+  }
+  ul,
+  ol {
+    @apply ps-3;
+  }
+
+  a {
+    @apply underline break-words;
+  }
+
+  input {
+    @apply px-2 py-1 bg-black bg-opacity-5 dark:bg-white dark:bg-opacity-5;
+  }
+
+  select {
+    @apply px-2 py-1 bg-black bg-opacity-5 dark:bg-white dark:bg-opacity-5;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
+@layer components {
+  .text-primary {
+    @apply text-[var(--contrast)] dark:text-[var(--primary)];
+  }
+  .text-contrast {
+    @apply text-[var(--primary)] dark:text-[var(--contrast)];
+  }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .bg-primary {
+    @apply bg-[var(--contrast)] dark:bg-[var(--primary)];
+  }
+  .bg-contrast {
+    @apply bg-[var(--primary)] dark:bg-[var(--contrast)];
+  }
+
+  .border-primary {
+    @apply border-[var(--contrast)] dark:border-[var(--primary)];
+  }
+  .border-contrast {
+    @apply border-[var(--primary)] dark:border-[var(--contrast)];
   }
 }
