@@ -6,6 +6,10 @@ const CaptureService = {
     captured.push(pokemonId);
     setCaptured(username, captured);
   },
+  async getCapturedPokemons(username: string) {
+    const captured = getCaputred(username);
+    return captured;
+  },
   async isPokemonCaptured(username: string, pokemonId: string) {
     const captured = getCaputred(username);
     return captured.includes(pokemonId);
