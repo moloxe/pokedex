@@ -14,8 +14,6 @@ export default function Home() {
   }
 
   if (auth.isLoading) <>Cargando :D</>;
-  console.log(auth.isLogged);
-  console.log(auth.user?.username);
 
   if (auth.isLogged) <h1>Hola {auth.user?.username}</h1>;
 
